@@ -29,30 +29,37 @@
 
                     <div id="mainNav" class="collapse navbar-collapse">
                         <ul class="navbar-nav w-100 d-flex justify-content-evenly">
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmInicio.aspx">Início</a>
+                                <a id="lnkInicio" runat="server" class="nav-link text-light" href="/Interface/FrmInicio.aspx">Início</a> 
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmFuncionario.aspx">Funcionários</a>
+                                <a id="lnkFuncionario" runat="server" class="nav-link text-light" href="/Interface/FrmFuncionario.aspx">Funcionários</a> 
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmSalario.aspx">Salário</a>
+                                <a id="lnkSalario" runat="server" class="nav-link text-light" href="/Interface/FrmSalario.aspx">Salário</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmFerias.aspx">Férias</a>
+                                <a id="lnkFerias" runat="server" class="nav-link text-light" href="/Interface/FrmFerias.aspx">Férias</a> 
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmRelatorio.aspx">Relatório</a>
+                                <a id="lnkRelatorio" runat="server" class="nav-link text-light" href="/Interface/FrmRelatorio.aspx">Relatório</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmAlteracoes.aspx">Alterações</a>
+                                <a id="lnkAlteracoes" runat="server" class="nav-link text-light" href="/Interface/FrmAlteracoes.aspx">Alterações</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="FrmCargos.aspx">Cargos</a>
+                                <a id="lnkCargos" runat="server" class="nav-link text-light" href="/Interface/FrmCargos.aspx">Cargos</a> 
                             </li>
+
                         </ul>
                     </div>
-
                 </div>
             </nav>
         </header>

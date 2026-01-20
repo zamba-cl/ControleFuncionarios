@@ -13,7 +13,7 @@ namespace ControleFuncionarios.Interface
             if (!IsPostBack)
             {
                 PreencherCargos();
-            }
+            }            
         }
         #endregion
 

@@ -39,47 +39,20 @@ namespace ControleFuncionarios.Interface
 
             doc.Open();
 
-            // ===== FONTES =====
             Font fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15);
             Font fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9);
             Font fontCell = FontFactory.GetFont(FontFactory.HELVETICA, 8);
 
-            // ===== TÍTULO =====
             Paragraph titulo = new Paragraph("Relatório de Funcionários", fontTitulo);
             titulo.Alignment = Element.ALIGN_CENTER;
             titulo.SpacingAfter = 15f;
             doc.Add(titulo);
 
-            // ===== TABELA =====
             PdfPTable tabela = new PdfPTable(9);
             tabela.WidthPercentage = 100;
+            tabela.SetWidths(new float[] { 4, 14, 12, 10, 8, 10, 10, 10, 8 });
 
-            tabela.SetWidths(new float[]
-            {
-        4,   // ID
-        14,  // Nome
-        12,  // Cargo
-        10,  // Admissão
-        8,   // Salário
-        10,  // Início férias
-        10,  // Fim férias
-        10,  // Status férias
-        8    // Status funcionário
-            });
-
-            // ===== CABEÇALHOS =====
-            string[] headers =
-            {
-        "ID",
-        "Nome",
-        "Cargo",
-        "Admissão",
-        "Salário",
-        "Início Férias",
-        "Fim Férias",
-        "Status Férias",
-        "Status"
-    };
+            string[] headers = { "ID", "Nome", "Cargo", "Admissão", "Salário", "Início Férias", "Fim Férias", "Status Férias", "Status"};
 
             foreach (string header in headers)
             {
@@ -91,29 +64,41 @@ namespace ControleFuncionarios.Interface
                 tabela.AddCell(cell);
             }
 
-            // ===== DADOS =====
             foreach (DataRow row in dtt.Rows)
             {
                 tabela.AddCell(CriarCelula(row["idFuncionario"], fontCell, Element.ALIGN_CENTER));
                 tabela.AddCell(CriarCelula(row["nomeFuncionario"], fontCell, Element.ALIGN_LEFT));
                 tabela.AddCell(CriarCelula(row["nomeCargo"], fontCell, Element.ALIGN_LEFT));
+
+
                 tabela.AddCell(CriarCelula(
-                    Convert.ToDateTime(row["dtAdmissao"]).ToString("dd/MM/yyyy"),
+                    row["dtAdmissao"] != DBNull.Value
+                        ? Convert.ToDateTime(row["dtAdmissao"]).ToString("dd/MM/yyyy")
+                        : "-",
                     fontCell,
                     Element.ALIGN_CENTER));
 
+                
                 tabela.AddCell(CriarCelula(
-                    Convert.ToDecimal(row["salario"]).ToString("C2"),
+                    row["salario"] != DBNull.Value
+                        ? Convert.ToDecimal(row["salario"]).ToString("C2")
+                        : "-",
                     fontCell,
                     Element.ALIGN_RIGHT));
 
+                
                 tabela.AddCell(CriarCelula(
-                    Convert.ToDateTime(row["dtInicio"]).ToString("dd/MM/yyyy"),
+                    row["dtInicio"] != DBNull.Value
+                        ? Convert.ToDateTime(row["dtInicio"]).ToString("dd/MM/yyyy")
+                        : "-",
                     fontCell,
                     Element.ALIGN_CENTER));
 
+               
                 tabela.AddCell(CriarCelula(
-                    Convert.ToDateTime(row["dtTermino"]).ToString("dd/MM/yyyy"),
+                    row["dtTermino"] != DBNull.Value
+                        ? Convert.ToDateTime(row["dtTermino"]).ToString("dd/MM/yyyy")
+                        : "-",
                     fontCell,
                     Element.ALIGN_CENTER));
 
@@ -130,13 +115,14 @@ namespace ControleFuncionarios.Interface
             Response.End();
         }
 
+
         private PdfPCell CriarCelula(object texto, Font fonte, int alinhamento)
         {
             PdfPCell cell = new PdfPCell(new Phrase(texto?.ToString(), fonte));
             cell.HorizontalAlignment = alinhamento;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.Padding = 4;
-            cell.NoWrap = false; // permite quebrar linha
+            cell.NoWrap = false;
             return cell;
         }
         #endregion

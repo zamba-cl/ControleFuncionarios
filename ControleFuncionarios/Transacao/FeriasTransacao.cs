@@ -5,6 +5,7 @@ namespace ControleFuncionarios.Transacao
 {
     public class FeriasTransacao
     {
+        #region IncluirFerias
         public static void IncluirFerias(Hashtable htParametros)
         {
             AcessarDados dados = new AcessarDados();
@@ -14,7 +15,9 @@ namespace ControleFuncionarios.Transacao
 
             dados.ExecutarNonQuery(sql, htParametros);
         }
+        #endregion
 
+        #region ExibirFerias
         public static DataTable ExibirFerias()
         {
             AcessarDados dados = new AcessarDados();
@@ -27,7 +30,9 @@ namespace ControleFuncionarios.Transacao
 
             return dados.ExecutarSelect(sql);
         }
+        #endregion
 
+        #region AtualizarFerias
         public static void AtualizarFerias(Hashtable htParametros)
         {
             AcessarDados dados = new AcessarDados();
@@ -41,7 +46,9 @@ namespace ControleFuncionarios.Transacao
 
             dados.ExecutarNonQuery(sql, htParametros);
         }
+        #endregion
 
+        #region ObterFeriasPorId
         public static DataTable ObterFeriasPorId(int idFerias)
         {
             AcessarDados dados = new AcessarDados();
@@ -56,7 +63,9 @@ namespace ControleFuncionarios.Transacao
 
             return dados.ExecutarSelect(sql, htParametros);
         }
+        #endregion
 
+        #region ExcluirFerias
         public static void ExcluirFerias(int idFerias)
         {
             AcessarDados dados = new AcessarDados();
@@ -69,5 +78,6 @@ namespace ControleFuncionarios.Transacao
 
             dados.ExecutarNonQuery(sql, htParametros);
         }
+        #endregion
     }
 }

@@ -61,7 +61,6 @@ namespace ControleFuncionarios
         }
         #endregion
 
-
         #region ExecutarInsert
         public int ExecutarInsert(string sql, Hashtable parametros = null)
         {
