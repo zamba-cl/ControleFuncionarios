@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ControleFuncionarios.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title></title>
+
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Bootstrap/css/bootstrap.css") %>" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <form id="form1" runat="server" enctype="multipart/form-data" class="flex-grow-1 d-flex flex-column">
+
+        <header>
+            <nav class="navbar navbar-expand-sm" style="background-color: #010126;">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="mainNav" class="collapse navbar-collapse">
+                        <ul class="navbar-nav w-100 d-flex justify-content-evenly">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmInicio.aspx">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmFuncionario.aspx">Funcionários</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmSalario.aspx">Salário</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmFerias.aspx">Férias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmRelatorio.aspx">Relatório</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmAlteracoes.aspx">Alterações</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="FrmCargos.aspx">Cargos</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </header>
+
+        <main class="container py-4 flex-grow-1">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+    </form>
+
+    <asp:ContentPlaceHolder ID="ScriptsContent" runat="server"></asp:ContentPlaceHolder>
+
+    <script src="<%= ResolveUrl("~/Bootstrap/js/bootstrap.bundle.min.js") %>"></script>
+
+</body>
+</html>
